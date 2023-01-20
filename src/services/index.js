@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function createProfile(data) {
   try {
@@ -14,7 +14,7 @@ export async function createProfile(data) {
     return response;
   } catch (err) {
     console.log(err);
-    alert(err.message);
+    throw err;
   }
 }
 
@@ -30,11 +30,11 @@ export async function getAllProfiles() {
     return response;
   } catch (err) {
     console.log(err);
-    alert(err.message);
+    throw err;
   }
 }
 
-export async function getUSerProfile(id) {
+export async function getUserProfile(id) {
   try {
     const res = await fetch(`${API_URL}/${id}`, {
       headers: {
@@ -46,6 +46,6 @@ export async function getUSerProfile(id) {
     return response;
   } catch (err) {
     console.log(err);
-    alert(err.message);
+    throw err;
   }
 }
